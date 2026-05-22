@@ -9,14 +9,23 @@ public class Book {
 	public int yearPublished;
 	public boolean translated;
 	
-	//constructor
+	//constructors
 	public Book()
 	{
-		String title = "";
-		String author = "";
-		String IBSN = "";
-		int yearPublished = 0;
-		boolean translated = false;
+		this.title = "";
+		this.author = "";
+		this.IBSN = "";
+		this.yearPublished = 0;
+		this.translated = false;
+	}
+
+	public Book (String title, String author, String IBSN, int yearPublished, boolean translated)
+	{
+		this.title = title;
+		this.author = author;
+		this.IBSN = IBSN;
+		this.yearPublished = yearPublished;
+		this.translated = translated;
 	}
 	
 	//getter methods
@@ -45,16 +54,7 @@ public class Book {
 		return translated;		
 	}
 	
-	//setter methods
-	public Book (String title, String author, String IBSN, int yearPublished, boolean translated)
-	{
-		this.title = title;
-		this.author = author;
-		this.IBSN = IBSN;
-		this.yearPublished = yearPublished;
-		this.translated = translated;
-	}
-	
+	//setter methods	
 	public void setTitle(String title)
 	{
 		this.title = title;
@@ -80,10 +80,10 @@ public class Book {
 		this.translated = translated;
 	}
 	
-	//print values of the book
+	//return values of the book
 	public String bookToString(Book book)
 	{
-		//format info of each book
+		//format info of the book
 		String bookInfo = String.format("Title: %s, Author: %s, Year Published: %d, IBSN: %s, Translated: %b", title, author, yearPublished, IBSN, translated); 
 		return bookInfo;
 	}
@@ -93,7 +93,8 @@ public class Book {
 class TranslatedBook extends Book 
 {
 	public String translator;
-	
+
+	//constructor
 	public TranslatedBook(String title, String author, int yearPublished, String IBSN, boolean translated, String translator)
 	{
 		this.title = title;
@@ -125,29 +126,40 @@ class BookCollection
 	//make a new collection of books
 	public BookCollection()
 	{
-		ArrayList<Book> bookCollection = new ArrayList<Book>();
+		this.bookCollection = new ArrayList<Book>();
 	}
 	
 	//add all of the info of a book into the collection
 	public void addBook(Book book)
 	{
-		ArrayList<Book> bookCollection = new ArrayList<Book>();
-		bookCollection.add(book);
+		this.bookCollection.add(book);
+	}
+
+	public int numBooks()
+	{
+		return bookCollection.size();
 	}
 	
 	//list the titles of all books in collection
-	public String getBookCollection()
+	public String getBookTitles()
 	{
-		ArrayList<Book> bookCollection = new ArrayList<Book>();
-		String booksInfo = "";
+		String bookTitles = "";
 		
 		//iterate through the set of books
-		for (Book book: bookCollection)
+		for (int i = 0; i < bookCollection.size(); i++)
 		{
-			booksInfo = booksInfo + ", " + book.getTitle();
+			if (i == 0)
+			{
+				bookTitles = bookCollection.get(i).getTitle();
+			}
+			
+			else
+			{	
+				bookTitles = bookTitles + ", " + bookCollection.get(i).getTitle();		
+			}
 		}
-		
-		return booksInfo;
+			
+		return bookTitles;
 	}
 	
 }

@@ -166,10 +166,69 @@ class BookTest {
 		Book newBook2 = new Book("Gideon the Ninth", "Tamsyn Muir", "9781250313188", 2019, false);
 		newBookCollection.addBook(newBook2);	
 		
-		assertEquals("The Odyssey, Roman Lives, Gideon the Ninth", newBookCollection.getBookTitles());
+		assertEquals("The Odyssey, Roman Lives, Gideon the Ninth", newBookCollection.getBookTitles());	
+	}
+
+	@Test
+	void test8()
+	{
+		Book newBook = new Book("Gideon the Ninth", "Tamsyn Muir", "9781250313188", 2019, false);
+		Book newBook1 = new Book("Harrow the Ninth", "Tamsyn Muir", "9781250313218", 2020, false);
+		TranslatedBook newBook2 = new TranslatedBook("The Odyssey", "Homer", 2016, "9780198736479", true, "Anthony Verity");
 		
+		BookCollection newBookCollection = new BookCollection();
+		
+		newBookCollection.addBook(newBook);
+		newBookCollection.addBook(newBook1);
+		newBookCollection.addBook(newBook2);
+		
+		assertEquals("Gideon the Ninth, Harrow the Ninth, The Odyssey", newBookCollection.getBookTitles());
+		
+		//remove the first book from the collection
+		newBookCollection.deleteBook(newBook);
+		
+		assertEquals("Harrow the Ninth, The Odyssey", newBookCollection.getBookTitles());
 	}
 	
+	@Test
+	void test9()
+	{
+		Book newBook = new Book("Gideon the Ninth", "Tamsyn Muir", "9781250313188", 2019, false);
+		Book newBook1 = new Book("Harrow the Ninth", "Tamsyn Muir", "9781250313218", 2020, false);
+		TranslatedBook newBook2 = new TranslatedBook("The Odyssey", "Homer", 2016, "9780198736479", true, "Anthony Verity");
+		
+		BookCollection newBookCollection = new BookCollection();
+		
+		newBookCollection.addBook(newBook);
+		newBookCollection.addBook(newBook1);
+		newBookCollection.addBook(newBook2);
+		
+		assertEquals("Gideon the Ninth, Harrow the Ninth, The Odyssey", newBookCollection.getBookTitles());
+		
+		//remove the second book from the collection
+		newBookCollection.deleteBook(newBook1);
+		
+		assertEquals("Gideon the Ninth, The Odyssey", newBookCollection.getBookTitles());
+	}
 	
-
+	@Test
+	void test10()
+	{
+		Book newBook = new Book("Gideon the Ninth", "Tamsyn Muir", "9781250313188", 2019, false);
+		Book newBook1 = new Book("Harrow the Ninth", "Tamsyn Muir", "9781250313218", 2020, false);
+		TranslatedBook newBook2 = new TranslatedBook("The Odyssey", "Homer", 2016, "9780198736479", true, "Anthony Verity");
+		
+		BookCollection newBookCollection = new BookCollection();
+		
+		newBookCollection.addBook(newBook);
+		newBookCollection.addBook(newBook1);
+		newBookCollection.addBook(newBook2);
+		
+		assertEquals("Gideon the Ninth, Harrow the Ninth, The Odyssey", newBookCollection.getBookTitles());
+		
+		//remove the third book from the collection
+		newBookCollection.deleteBook(newBook2);
+		
+		assertEquals("Gideon the Ninth, Harrow the Ninth", newBookCollection.getBookTitles());
+	}
 }

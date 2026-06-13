@@ -139,6 +139,13 @@ class BookCollection
 	{
 		return bookCollection.size();
 	}
+
+	//delete a book from the collection
+	public ArrayList<Book> deleteBook(Book book)
+	{
+		bookCollection.remove(book);
+		return bookCollection;
+	}
 	
 	//list the titles of all books in collection
 	public String getBookTitles()

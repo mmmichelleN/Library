@@ -139,6 +139,9 @@ class BookTest {
 		assertEquals(false, newBook2.getTranslated());
 		
 		BookCollection newBookCollection = new BookCollection(); //make a new collection of books 
+
+		//Test numBook method on empty BookCollection
+		assertEquals(0, newBookCollection.numBooks());
 		
 		newBookCollection.addBook(newBook); //add Gideon the Ninth to collection
 		newBookCollection.addBook(newBook1); //add Harrow the Ninth to collection
